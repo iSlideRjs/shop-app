@@ -7,9 +7,9 @@ function Header() {
   return (
     <Navbar bg="dark" variant="dark mb-2">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand className="logo" href="#home">
           <img
-            alt=""
+            alt="Shop App"
             src="/logo.svg"
             width="35"
             height="35"
@@ -19,9 +19,7 @@ function Header() {
         </Navbar.Brand>
         <Nav>
           <Nav.Link href="#">
-            <Button disabled variant="outline-primary rounded-pill">
-              Cart
-            </Button>{' '}
+            <Button variant="outline-primary rounded-pill">Cart</Button>{' '}
           </Nav.Link>
         </Nav>
       </Container>

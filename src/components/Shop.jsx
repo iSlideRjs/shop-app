@@ -3,8 +3,13 @@ import Card from 'react-bootstrap/Card';
 
 function Shop() {
   return (
-    <Card className="m-3" style={{ width: '16rem' }}>
-      <Card.Img style={{ width: '15rem' }} variant="top m-1" src="/logo.svg" />
+    <Card
+      text="light"
+      bg="dark"
+      className="m-3 rounded-4"
+      style={{ width: '250px' }}
+    >
+      <Card.Img variant="top" src="/logo.svg" />
       <Card.Body>
         <Card.Title>Product</Card.Title>
         <Card.Text>Price $</Card.Text>
