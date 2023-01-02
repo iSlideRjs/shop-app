@@ -1,22 +1,26 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { useState, useEffect } from 'react';
+import { API_KEY, API_URL } from '../config';
+import { Preloader } from './Preloader';
+import { GoodsList } from './GoodsList';
 
 function Shop() {
-  return (
-    <Card
-      text="light"
-      bg="dark"
-      className="m-3 rounded-4"
-      style={{ width: '250px' }}
-    >
-      <Card.Img variant="top" src="/logo.svg" />
-      <Card.Body>
-        <Card.Title>Product</Card.Title>
-        <Card.Text>Price $</Card.Text>
-        <Button variant="primary">Buy</Button>
-      </Card.Body>
-    </Card>
-  );
+  const [goods, setGoods] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(function getGoods() {
+    fetch(API_URL, {
+      headers: {
+        Authorization: API_KEY,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        data.shop && setGoods(data.shop);
+        setLoading(false);
+      });
+  }, []);
+
+  return <main>{loading ? <Preloader /> : <GoodsList goods={goods} />}</main>;
 }
 
 export { Shop };

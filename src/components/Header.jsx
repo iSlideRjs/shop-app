@@ -8,13 +8,13 @@ function Header() {
     <Navbar bg="dark" variant="dark mb-2">
       <Container>
         <Navbar.Brand className="logo" href="#home">
-          <img
+          {/* <img
             alt="Shop App"
-            src="/logo.svg"
+            src=""
             width="35"
             height="35"
             className="d-inline-block align-top"
-          />{' '}
+          />{' '} */}
           Shop App
         </Navbar.Brand>
         <Nav>
