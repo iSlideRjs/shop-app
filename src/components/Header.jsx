@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
 
 function Header() {
   return (
@@ -19,7 +20,12 @@ function Header() {
         </Navbar.Brand>
         <Nav>
           <Nav.Link href="#">
-            <Button variant="outline-primary rounded-pill">Cart</Button>{' '}
+            <Button variant="outline-primary rounded-pill">
+              Cart{' '}
+              <Badge bg="danger" pill>
+                0
+              </Badge>
+            </Button>{' '}
           </Nav.Link>
         </Nav>
       </Container>
