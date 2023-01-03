@@ -18,9 +18,13 @@ function GoodsItem(props) {
       className="m-3 mb-1"
       style={{ width: '300px' }}
     >
-      <Carousel interval={null} variant="light" indicators={true}>
+      <Carousel interval={null} variant="light pill" indicators={true}>
         <Carousel.Item>
-          <img className="d-block w-100" src={background} alt={displayName} />
+          <img
+            className="d-block w-100 rounded-2"
+            src={background}
+            alt={displayName}
+          />
         </Carousel.Item>
         <Carousel.Item>
           <img className="d-block w-100" src={url} alt={displayName} />
@@ -30,8 +34,8 @@ function GoodsItem(props) {
         <Card.Title>{displayName}</Card.Title>
         <Card.Text>{displayDescription}</Card.Text>
       </Card.Body>
-      <Card.Footer variant="danger">
-        <Button variant="primary">Buy</Button>
+      <Card.Footer className="border-top border-primary" variant="danger">
+        <Button variant="primary rounded-4">Buy</Button>
         <span className="m-2">{finalPrice} V-Bucks</span>
       </Card.Footer>
     </Card>

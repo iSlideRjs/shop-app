@@ -20,7 +20,11 @@ function Shop() {
       });
   }, []);
 
-  return <main>{loading ? <Preloader /> : <GoodsList goods={goods} />}</main>;
+  return (
+    <main className="mainx">
+      {loading ? <Preloader /> : <GoodsList goods={goods} />}
+    </main>
+  );
 }
 
 export { Shop };
