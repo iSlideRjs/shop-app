@@ -21,7 +21,7 @@ function Shop() {
   }, []);
 
   return (
-    <main className="mainx">
+    <main className="main mb-2">
       {loading ? <Preloader /> : <GoodsList goods={goods} />}
     </main>
   );

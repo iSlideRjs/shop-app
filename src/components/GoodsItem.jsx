@@ -8,7 +8,7 @@ function GoodsItem(props) {
     displayName,
     displayDescription,
     price: { finalPrice },
-    displayAssets: [{ background, url }],
+    displayAssets: [{ background, full_background }],
   } = props;
   return (
     <Card
@@ -18,16 +18,22 @@ function GoodsItem(props) {
       className="m-3 mb-1"
       style={{ width: '300px' }}
     >
-      <Carousel interval={null} variant="light pill" indicators={true}>
+      <Carousel interval={null} variant="light pill" indicators={false}>
         <Carousel.Item>
           <img
             className="d-block w-100 rounded-2"
-            src={background}
+            src={full_background}
             alt={displayName}
+            style={{ height: '298px' }}
           />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" src={url} alt={displayName} />
+          <img
+            className="d-block w-100"
+            src={background}
+            alt={displayName}
+            style={{ height: '298px' }}
+          />
         </Carousel.Item>
       </Carousel>
       <Card.Body>

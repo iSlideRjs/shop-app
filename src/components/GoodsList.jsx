@@ -6,7 +6,7 @@ function GoodsList(props) {
   return (
     <div className="d-flex flex-wrap justify-content-center align-content-center">
       {goods.length ? (
-        goods.map((item) => <GoodsItem key={item.id} {...item} />)
+        goods.map((item) => <GoodsItem key={item.mainId} {...item} />)
       ) : (
         <h3
           className="d-flex flex-wrap align-content-center"

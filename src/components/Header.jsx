@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+import { GoodsItem } from './GoodsItem';
 
 function Header() {
   return (
@@ -23,7 +24,7 @@ function Header() {
             <Button variant="outline-primary rounded-pill">
               Cart{' '}
               <Badge bg="danger" pill>
-                0
+                10
               </Badge>
             </Button>{' '}
           </Nav.Link>

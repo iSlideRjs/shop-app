@@ -19,12 +19,6 @@ body {
   font-family: 'Pacifico', cursive;
 }
 
-.mainx {
-  min-height: 100%;
-  padding-bottom: 100px;
-}
-
-.footerx {
-  margin-bottom: -100px;
-  height: 56px;
+.main {
+  min-height: calc(100vh - 56px - 70px - 1rem);
 }
