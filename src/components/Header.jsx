@@ -24,7 +24,7 @@ function Header() {
             <Button variant="outline-primary rounded-pill">
               Cart{' '}
               <Badge bg="danger" pill>
-                10
+                0
               </Badge>
             </Button>{' '}
           </Nav.Link>

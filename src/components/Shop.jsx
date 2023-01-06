@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { API_KEY, API_URL } from '../config';
 import { Preloader } from './Preloader';
 import { GoodsList } from './GoodsList';
+import { Pagination } from './Pagination';
 
 function Shop() {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [shopPerPage] = useState(10);
 
   useEffect(function getGoods() {
     fetch(API_URL, {
@@ -20,9 +23,25 @@ function Shop() {
       });
   }, []);
 
+  const lastShopIndex = currentPage * shopPerPage;
+  const firstShopIndex = lastShopIndex - shopPerPage;
+  const currentShop = goods.slice(firstShopIndex, lastShopIndex);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const nextPage = () => setCurrentPage((prev) => prev + 1);
+  const prevPage = () => setCurrentPage((prev) => prev - 1);
+
   return (
     <main className="main mb-2">
-      {loading ? <Preloader /> : <GoodsList goods={goods} />}
+      {loading && <Preloader />}
+      <GoodsList goods={currentShop} />
+      <Pagination
+        shopPerPage={shopPerPage}
+        nextPage={nextPage}
+        prevPage={prevPage}
+        totalShop={goods.length}
+        paginate={paginate}
+      />
     </main>
   );
 }
