@@ -1,21 +1,18 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Git from './Git.svg';
 
 function Footer() {
   return (
     <Navbar
-      className="footerx"
+      className="d-flex justify-content-center"
       style={{ background: '#d5d5d5' }}
       variant="light"
     >
-      <Container className="d-flex justify-content-center">
-        <Nav>
-          <Nav.Link href="https://github.com/iKHVRV/shop-app" target="_blank">
-            Github
-          </Nav.Link>
-        </Nav>
-      </Container>
+      <Nav.Link href="https://github.com/iKHVRV/shop-app" target="_blank">
+        <img alt="Git Hub" src={Git} width="40" height="40" />
+      </Nav.Link>
     </Navbar>
   );
 }

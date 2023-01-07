@@ -8,7 +8,7 @@ function Shop() {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [shopPerPage] = useState(10);
+  const [shopPerPage, setShopPerPage] = useState(15);
 
   useEffect(function getGoods() {
     fetch(API_URL, {
@@ -30,18 +30,24 @@ function Shop() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const nextPage = () => setCurrentPage((prev) => prev + 1);
   const prevPage = () => setCurrentPage((prev) => prev - 1);
-
   return (
     <main className="main mb-2">
-      {loading && <Preloader />}
-      <GoodsList goods={currentShop} />
-      <Pagination
-        shopPerPage={shopPerPage}
-        nextPage={nextPage}
-        prevPage={prevPage}
-        totalShop={goods.length}
-        paginate={paginate}
-      />
+      {loading ? (
+        <Preloader />
+      ) : (
+        <div>
+          <GoodsList goods={currentShop} />
+          <Pagination
+            setShopPerPage={setShopPerPage}
+            currentPage={currentPage}
+            shopPerPage={shopPerPage}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            totalShop={goods.length}
+            paginate={paginate}
+          />
+        </div>
+      )}
     </main>
   );
 }

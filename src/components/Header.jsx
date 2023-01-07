@@ -9,7 +9,7 @@ function Header() {
   return (
     <Navbar bg="dark" variant="dark mb-2">
       <Container>
-        <Navbar.Brand className="logo" href="#home">
+        <Navbar.Brand className="logo" href="/">
           <img
             alt="Shop App"
             src={Logo}
