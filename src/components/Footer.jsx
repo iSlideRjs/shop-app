@@ -1,7 +1,6 @@
-import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Git from './Git.svg';
+import Git from '../svg/Git.svg';
 
 function Footer() {
   return (

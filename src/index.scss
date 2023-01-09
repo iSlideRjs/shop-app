@@ -22,3 +22,19 @@ body {
 .main {
   min-height: calc(100vh - 56px - 70px - 1rem);
 }
+
+.cart {
+  &:hover {
+    background: $blue-600;
+  }
+  cursor: pointer;
+  padding: 1rem;
+  border: none;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  z-index: 2;
+  background: $primary;
+  box-shadow: 3px 4px 7px 1px #0000005e;
+}

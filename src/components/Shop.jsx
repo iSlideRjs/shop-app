@@ -3,12 +3,14 @@ import { API_KEY, API_URL } from '../config';
 import { Preloader } from './Preloader';
 import { GoodsList } from './GoodsList';
 import { Pagination } from './Pagination';
+import { Cart } from './Cart';
 
 function Shop() {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [shopPerPage, setShopPerPage] = useState(15);
+  const [order, setOrder] = useState([]);
 
   useEffect(function getGoods() {
     fetch(API_URL, {
@@ -32,6 +34,7 @@ function Shop() {
   const prevPage = () => setCurrentPage((prev) => prev - 1);
   return (
     <main className="main mb-2">
+      <Cart quantity={order.length} />
       {loading ? (
         <Preloader />
       ) : (
