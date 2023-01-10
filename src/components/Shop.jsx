@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { API_KEY, API_URL } from '../config';
 import { Preloader } from './Preloader';
 import { GoodsList } from './GoodsList';
-import { Pagination } from './Pagination';
+import { Pagenation } from './Pagenation';
 import { Cart } from './Cart';
 
 function Shop() {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [shopPerPage, setShopPerPage] = useState(15);
+  const [shopPerPage, setShopPerPage] = useState(14);
   const [order, setOrder] = useState([]);
 
   useEffect(function getGoods() {
@@ -40,8 +40,9 @@ function Shop() {
       ) : (
         <div>
           <GoodsList goods={currentShop} />
-          <Pagination
+          <Pagenation
             setShopPerPage={setShopPerPage}
+            setCurrentPage={setCurrentPage}
             currentPage={currentPage}
             shopPerPage={shopPerPage}
             nextPage={nextPage}

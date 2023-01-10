@@ -32,9 +32,32 @@ body {
   border: none;
   border-radius: 50px;
   position: fixed;
-  bottom: 2rem;
+  bottom: 1rem;
   right: 1rem;
   z-index: 2;
   background: $primary;
   box-shadow: 3px 4px 7px 1px #0000005e;
+}
+
+.card {
+  width: 300px;
+  margin: 16px;
+}
+
+@media only screen and (max-width: 420px) {
+  .card {
+    width: 185px;
+    margin: 5px;
+    &Body {
+      height: 80px;
+      font-size: 12px;
+    }
+    &Title {
+      font-size: 14px;
+    }
+    &Footer {
+      height: 55px;
+      font-size: 11px;
+    }
+  }
 }
