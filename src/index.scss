@@ -24,9 +24,6 @@ body {
 }
 
 .cart {
-  &:hover {
-    background: $blue-600;
-  }
   cursor: pointer;
   padding: 1rem;
   border: none;
@@ -37,11 +34,17 @@ body {
   z-index: 2;
   background: $primary;
   box-shadow: 3px 4px 7px 1px #0000005e;
+  &:hover {
+    background: $blue-600;
+  }
 }
 
 .card {
   width: 300px;
   margin: 16px;
+  &Img {
+    height: 298px;
+  }
 }
 
 @media only screen and (max-width: 420px) {
@@ -49,15 +52,40 @@ body {
     width: 185px;
     margin: 5px;
     &Body {
-      height: 80px;
+      height: 100%;
       font-size: 12px;
     }
     &Title {
       font-size: 14px;
     }
     &Footer {
-      height: 55px;
-      font-size: 11px;
+      height: 50px;
+      padding: 5px;
+      font-size: 13px;
+    }
+    &Img {
+      height: 183px;
+    }
+  }
+}
+
+@media only screen and (max-width: 389px) {
+  .card {
+    width: 170px;
+    &Body {
+      height: 100%;
+      font-size: 12px;
+    }
+    &Title {
+      font-size: 14px;
+    }
+    &Footer {
+      height: 50px;
+      padding: 5px;
+      font-size: 13px;
+    }
+    &Img {
+      height: 168px;
     }
   }
 }

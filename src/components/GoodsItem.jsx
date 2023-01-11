@@ -9,20 +9,21 @@ function GoodsItem(props) {
     displayDescription,
     price: { finalPrice },
     displayAssets: [{ background, full_background }],
+    addToBasket = Function.prototype,
   } = props;
   return (
     <Card id={mainId} text="light" bg="dark" className="mb-1 card">
       <Carousel interval={null} variant="light pill" indicators={false}>
         <Carousel.Item>
           <img
-            className="d-block w-100 rounded-2 picture"
+            className="d-block w-100 rounded-2 cardImg"
             src={full_background}
             alt={displayName}
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 rounded-2 picture"
+            className="d-block w-100 rounded-2 cardImg"
             src={background}
             alt={displayName}
           />
@@ -36,7 +37,14 @@ function GoodsItem(props) {
         className="border-top border-primary cardFooter"
         variant="danger"
       >
-        <Button variant="primary rounded-4">Buy</Button>
+        <Button
+          variant="primary rounded-4"
+          onClick={() =>
+            addToBasket({ mainId, displayName, price: { finalPrice } })
+          }
+        >
+          Buy
+        </Button>
         <span className="m-2">{finalPrice} V-Bucks</span>
       </Card.Footer>
     </Card>

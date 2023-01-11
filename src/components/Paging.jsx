@@ -2,7 +2,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Pagination from 'react-bootstrap/Pagination';
 
-const Pagenation = ({
+const Paging = ({
   shopPerPage,
   totalShop,
   paginate,
@@ -49,4 +49,4 @@ const Pagenation = ({
   );
 };
 
-export { Pagenation };
+export { Paging };

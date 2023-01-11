@@ -1,12 +1,14 @@
 import { GoodsItem } from './GoodsItem';
 
 function GoodsList(props) {
-  const { goods = [] } = props;
+  const { goods = [], addToBasket = Function.prototype } = props;
 
   return (
     <div className="d-flex flex-wrap justify-content-center align-content-center">
       {goods.length ? (
-        goods.map((item) => <GoodsItem key={item.mainId} {...item} />)
+        goods.map((item) => (
+          <GoodsItem addToBasket={addToBasket} key={item.mainId} {...item} />
+        ))
       ) : (
         <h3
           className="d-flex flex-wrap align-content-center"
