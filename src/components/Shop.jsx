@@ -9,7 +9,7 @@ function Shop() {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [shopPerPage, setShopPerPage] = useState(15);
+  const [shopPerPage, setShopPerPage] = useState(12);
   const [order, setOrder] = useState([]);
 
   const addToBasket = (item) => {

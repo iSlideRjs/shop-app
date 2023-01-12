@@ -21,6 +21,8 @@ body {
 
 .main {
   min-height: calc(100vh - 56px - 70px - 1rem);
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .cart {
@@ -41,7 +43,7 @@ body {
 
 .card {
   width: 300px;
-  margin: 16px;
+  margin: 12px;
   &Img {
     height: 298px;
   }

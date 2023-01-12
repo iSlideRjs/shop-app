@@ -34,9 +34,9 @@ const Paging = ({
         id="dropdown-basic-button"
         title="Display on page"
       >
-        <Dropdown.Item onClick={() => setShopPerPage(30)}>30</Dropdown.Item>
-        <Dropdown.Item onClick={() => setShopPerPage(40)}>40</Dropdown.Item>
-        <Dropdown.Item onClick={() => setShopPerPage(50)}>50</Dropdown.Item>
+        <Dropdown.Item onClick={() => setShopPerPage(24)}>24</Dropdown.Item>
+        <Dropdown.Item onClick={() => setShopPerPage(36)}>36</Dropdown.Item>
+        <Dropdown.Item onClick={() => setShopPerPage(48)}>48</Dropdown.Item>
       </DropdownButton>
       <Pagination className="d-flex justify-content-center ">
         <Pagination.First onClick={() => setCurrentPage(1)} />
