@@ -10,7 +10,10 @@ function GoodsItem(props) {
     price: { finalPrice },
     displayAssets: [{ background, full_background }],
     addToBasket = Function.prototype,
+    order,
   } = props;
+
+  const orderItem = order.find((item) => item.mainId === mainId);
   return (
     <Card id={mainId} text="light" bg="dark" className="mb-1 card">
       <Carousel interval={null} variant="light pill" indicators={false}>
@@ -43,7 +46,7 @@ function GoodsItem(props) {
             addToBasket({ mainId, displayName, price: { finalPrice } })
           }
         >
-          Buy
+          {orderItem?.quantity ? orderItem?.quantity : 'Buy'}
         </Button>
         <span className="m-2">{finalPrice} V-Bucks</span>
       </Card.Footer>

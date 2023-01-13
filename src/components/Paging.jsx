@@ -3,18 +3,17 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Pagination from 'react-bootstrap/Pagination';
 
 const Paging = ({
-  shopPerPage,
-  totalShop,
   paginate,
-  prevPage,
-  nextPage,
+  toPrevPage,
+  toNextPage,
   setShopPerPage,
   currentPage,
   setCurrentPage,
+  totalPages,
 }) => {
   let active = currentPage;
   let pageNumbers = [];
-  for (let number = 1; number <= Math.ceil(totalShop / shopPerPage); number++) {
+  for (let number = 1; number <= totalPages; number++) {
     pageNumbers.push(
       <Pagination.Item
         onClick={() => paginate(number)}
@@ -25,6 +24,10 @@ const Paging = ({
       </Pagination.Item>
     );
   }
+
+  const lastPage = () => {
+    paginate(totalPages);
+  };
 
   return (
     <div className="m-3">
@@ -40,10 +43,13 @@ const Paging = ({
       </DropdownButton>
       <Pagination className="d-flex justify-content-center ">
         <Pagination.First onClick={() => setCurrentPage(1)} />
-        <Pagination.Prev onClick={prevPage} disabled={currentPage === 1} />
+        <Pagination.Prev onClick={toPrevPage} disabled={currentPage === 1} />
         {pageNumbers}
-        <Pagination.Next onClick={nextPage} />
-        <Pagination.Last />
+        <Pagination.Next
+          onClick={toNextPage}
+          disabled={currentPage === totalPages}
+        />
+        <Pagination.Last onClick={lastPage} />
       </Pagination>
     </div>
   );

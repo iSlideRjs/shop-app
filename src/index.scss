@@ -1,3 +1,10 @@
+$enable-reduced-motion: false;
+@mixin mq($str) {
+  @media (max-width: $str) {
+    @content;
+  }
+}
+
 @import '~bootstrap/scss/bootstrap';
 
 * {
@@ -47,10 +54,7 @@ body {
   &Img {
     height: 298px;
   }
-}
-
-@media only screen and (max-width: 420px) {
-  .card {
+  @include mq(420px) {
     width: 185px;
     margin: 5px;
     &Body {
@@ -69,10 +73,7 @@ body {
       height: 183px;
     }
   }
-}
-
-@media only screen and (max-width: 389px) {
-  .card {
+  @include mq(389px) {
     width: 170px;
     &Body {
       height: 100%;

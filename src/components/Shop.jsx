@@ -53,10 +53,11 @@ function Shop() {
   const lastShopIndex = currentPage * shopPerPage;
   const firstShopIndex = lastShopIndex - shopPerPage;
   const currentShop = goods.slice(firstShopIndex, lastShopIndex);
+  const totalPages = Math.ceil(goods.length / shopPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const nextPage = () => setCurrentPage((prev) => prev + 1);
-  const prevPage = () => setCurrentPage((prev) => prev - 1);
+  const toNextPage = () => setCurrentPage((prev) => prev + 1);
+  const toPrevPage = () => setCurrentPage((prev) => prev - 1);
   return (
     <main className="main mb-2">
       <Cart quantity={order.length} />
@@ -64,15 +65,19 @@ function Shop() {
         <Preloader />
       ) : (
         <div>
-          <GoodsList goods={currentShop} addToBasket={addToBasket} />
+          <GoodsList
+            goods={currentShop}
+            addToBasket={addToBasket}
+            order={order}
+          />
           <Paging
             setShopPerPage={setShopPerPage}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
             shopPerPage={shopPerPage}
-            nextPage={nextPage}
-            prevPage={prevPage}
-            totalShop={goods.length}
+            toNextPage={toNextPage}
+            toPrevPage={toPrevPage}
+            totalPages={totalPages}
             paginate={paginate}
           />
         </div>
