@@ -1,9 +1,11 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { API_KEY, API_URL } from '../config';
 import { Preloader } from './Preloader';
 import { GoodsList } from './GoodsList';
 import { Paging } from './Paging';
 import { Cart } from './Cart';
+import { BasketList } from './BasketList';
 
 function Shop() {
   const [goods, setGoods] = useState([]);
@@ -11,6 +13,7 @@ function Shop() {
   const [currentPage, setCurrentPage] = useState(1);
   const [shopPerPage, setShopPerPage] = useState(12);
   const [order, setOrder] = useState([]);
+  const [isBasketShow, setBasketShow] = useState(false);
 
   const addToBasket = (item) => {
     const itemIndex = order.findIndex(
@@ -60,7 +63,7 @@ function Shop() {
   const toPrevPage = () => setCurrentPage((prev) => prev - 1);
   return (
     <main className="main mb-2">
-      <Cart quantity={order.length} />
+      <Cart onClick={() => setBasketShow(true)} quantity={order.length} />
       {loading ? (
         <Preloader />
       ) : (
@@ -82,6 +85,11 @@ function Shop() {
           />
         </div>
       )}
+      <BasketList
+        show={isBasketShow}
+        onHide={() => setBasketShow(false)}
+        order={order}
+      />
     </main>
   );
 }
