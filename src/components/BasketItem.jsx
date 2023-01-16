@@ -1,3 +1,6 @@
+import CloseButton from 'react-bootstrap/CloseButton';
+import ListGroup from 'react-bootstrap/ListGroup';
+
 function BacketItem(props) {
   const {
     mainId,
@@ -6,10 +9,14 @@ function BacketItem(props) {
     quantity,
   } = props;
   return (
-    <p>
-      {displayName} x{quantity} = {finalPrice} V-Bucks
-      <span> X</span>
-    </p>
+    <ListGroup>
+      {' '}
+      <ListGroup.Item className="itemBasket" variant="light">
+        {displayName} <span className="itemBasketNumber">x{quantity}</span> ={' '}
+        {finalPrice} V-Bucks
+        <CloseButton className="delete" />
+      </ListGroup.Item>
+    </ListGroup>
   );
 }
 

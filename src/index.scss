@@ -1,4 +1,7 @@
 $enable-reduced-motion: false;
+$modal-content-bg: #212529;
+$modal-content-color: white;
+$modal-header-border-color: #7411a1;
 @mixin mq($str) {
   @media (max-width: $str) {
     @content;
@@ -91,4 +94,29 @@ body {
       height: 168px;
     }
   }
+}
+
+.price {
+  color: $success;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.delete {
+  float: right;
+}
+
+.itemBasket {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #212529;
+  font-weight: bold;
+  &Number {
+    color: #bd1111;
+  }
+}
+
+.emptyBasket {
+  display: flex;
+  justify-content: center;
 }

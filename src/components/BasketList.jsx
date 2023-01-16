@@ -21,13 +21,17 @@ function BasketList(props) {
         {order.length ? (
           order.map((item) => <BacketItem key={item.mainId} {...item} />)
         ) : (
-          <p>Empty Basket</p>
+          <h2 className="emptyBasket">Empty Basket</h2>
         )}
-        <h5>Total Price: {totalPrice} V-Bucks</h5>
+        <div className="price">Total Price: {totalPrice} V-Bucks</div>
       </Modal.Body>
       <Modal.Footer>
-        <Button>Buy</Button>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button disabled={order.length === 0} variant="success rounded-5">
+          Buy
+        </Button>
+        <Button variant="danger rounded-5" onClick={props.onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );
