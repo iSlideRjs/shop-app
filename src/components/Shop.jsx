@@ -40,6 +40,11 @@ function Shop() {
     }
   };
 
+  const removeFromBasket = (itemId) => {
+    const newOrder = order.filter((el) => el.mainId !== itemId);
+    setOrder(newOrder);
+  };
+
   useEffect(function getGoods() {
     fetch(API_URL, {
       headers: {
@@ -87,6 +92,7 @@ function Shop() {
       )}
       <BasketList
         show={isBasketShow}
+        removeFromBasket={removeFromBasket}
         onHide={() => setBasketShow(false)}
         order={order}
       />

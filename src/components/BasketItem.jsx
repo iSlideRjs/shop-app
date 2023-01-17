@@ -7,14 +7,18 @@ function BacketItem(props) {
     displayName,
     price: { finalPrice },
     quantity,
+    removeFromBasket = Function.prototype,
   } = props;
   return (
     <ListGroup>
       {' '}
       <ListGroup.Item className="itemBasket" variant="light">
         {displayName} <span className="itemBasketNumber">x{quantity}</span> ={' '}
-        {finalPrice} V-Bucks
-        <CloseButton className="delete" />
+        {finalPrice * quantity} V-Bucks
+        <CloseButton
+          className="delete"
+          onClick={() => removeFromBasket(mainId)}
+        />
       </ListGroup.Item>
     </ListGroup>
   );

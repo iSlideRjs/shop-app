@@ -1,7 +1,7 @@
 $enable-reduced-motion: false;
 $modal-content-bg: #212529;
 $modal-content-color: white;
-$modal-header-border-color: #7411a1;
+$modal-header-border-color: #2c8a48;
 @mixin mq($str) {
   @media (max-width: $str) {
     @content;
@@ -97,7 +97,7 @@ body {
 }
 
 .price {
-  color: $success;
+  color: $white;
   font-weight: bold;
   font-size: 25px;
 }
