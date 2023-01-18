@@ -3,7 +3,12 @@ import Modal from 'react-bootstrap/Modal';
 import { BacketItem } from './BasketItem';
 
 function BasketList(props) {
-  const { order = [], removeFromBasket = Function.prototype } = props;
+  const {
+    order = [],
+    removeFromBasket = Function.prototype,
+    incQuantity = Function.prototype,
+    decQuantity = Function.prototype,
+  } = props;
   const totalPrice = order.reduce((sum, el) => {
     return sum + el.price.finalPrice * el.quantity;
   }, 0);
@@ -23,6 +28,8 @@ function BasketList(props) {
             <BacketItem
               key={item.mainId}
               removeFromBasket={removeFromBasket}
+              incQuantity={incQuantity}
+              decQuantity={decQuantity}
               {...item}
             />
           ))
@@ -32,12 +39,14 @@ function BasketList(props) {
       </Modal.Body>
       <Modal.Footer>
         <div className="price">Total Price: {totalPrice} V-Bucks</div>
-        <Button disabled={order.length === 0} variant="success rounded-5">
-          Buy
-        </Button>
-        <Button variant="danger rounded-5" onClick={props.onHide}>
-          Close
-        </Button>
+        <div>
+          <Button disabled={order.length === 0} variant="success rounded-5">
+            Buy
+          </Button>
+          <Button variant="danger rounded-5 ms-2" onClick={props.onHide}>
+            Close
+          </Button>
+        </div>
       </Modal.Footer>
     </Modal>
   );
