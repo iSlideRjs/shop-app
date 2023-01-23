@@ -11,6 +11,7 @@ function GoodsItem(props) {
     displayAssets: [{ background, full_background }],
     addToBasket = Function.prototype,
     order,
+    setShow,
   } = props;
 
   const orderItem = order.find((item) => item.mainId === mainId);
@@ -42,9 +43,10 @@ function GoodsItem(props) {
       >
         <Button
           variant="primary rounded-4"
-          onClick={() =>
-            addToBasket({ mainId, displayName, price: { finalPrice } })
-          }
+          onClick={() => {
+            addToBasket({ mainId, displayName, price: { finalPrice } });
+            setShow(true);
+          }}
         >
           {orderItem?.quantity ? orderItem?.quantity : 'Buy'}
         </Button>

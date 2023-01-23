@@ -51,6 +51,19 @@ body {
   }
 }
 
+.alert {
+  position: fixed;
+  bottom: 1rem;
+  right: 7rem;
+  z-index: 3;
+  padding: 0;
+  margin: 0;
+  &Toast {
+    height: 62px;
+    width: 200px;
+  }
+}
+
 .card {
   width: 300px;
   margin: 12px;
@@ -107,19 +120,25 @@ body {
 }
 
 .itemBasket {
+  padding: 8px 5px;
   margin-bottom: 5px;
   font-size: 14px;
   color: #212529;
   font-weight: bold;
+  user-select: none;
   &Number {
     color: #bd1111;
-    font-size: 17px;
   }
 }
 
 .emptyBasket {
   display: flex;
   justify-content: center;
+}
+
+.textCart {
+  display: inline-block;
+  width: 292px;
 }
 
 .plus {

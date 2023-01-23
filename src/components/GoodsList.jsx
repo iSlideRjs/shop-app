@@ -1,7 +1,12 @@
 import { GoodsItem } from './GoodsItem';
 
 function GoodsList(props) {
-  const { goods = [], addToBasket = Function.prototype, order } = props;
+  const {
+    goods = [],
+    addToBasket = Function.prototype,
+    order,
+    setShow,
+  } = props;
 
   return (
     <div className="d-flex flex-wrap justify-content-center align-content-center">
@@ -12,6 +17,7 @@ function GoodsList(props) {
             order={order}
             key={item.mainId}
             {...item}
+            setShow={setShow}
           />
         ))
       ) : (

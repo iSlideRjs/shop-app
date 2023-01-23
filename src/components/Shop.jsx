@@ -6,6 +6,7 @@ import { GoodsList } from './GoodsList';
 import { Paging } from './Paging';
 import { Cart } from './Cart';
 import { BasketList } from './BasketList';
+import { Alert } from './Alert';
 
 function Shop() {
   const [goods, setGoods] = useState([]);
@@ -14,6 +15,8 @@ function Shop() {
   const [shopPerPage, setShopPerPage] = useState(12);
   const [order, setOrder] = useState([]);
   const [isBasketShow, setBasketShow] = useState(false);
+  const [show, setShow] = useState(false);
+  const [alertName, setAlertName] = useState('');
 
   const addToBasket = (item) => {
     const itemIndex = order.findIndex(
@@ -38,6 +41,7 @@ function Shop() {
       });
       setOrder(newOrder);
     }
+    setAlertName(item.displayName);
   };
 
   const removeFromBasket = (itemId) => {
@@ -106,6 +110,7 @@ function Shop() {
             goods={currentShop}
             addToBasket={addToBasket}
             order={order}
+            setShow={setShow}
           />
           <Paging
             setShopPerPage={setShopPerPage}
@@ -127,6 +132,7 @@ function Shop() {
         decQuantity={decQuantity}
         incQuantity={incQuantity}
       />
+      <Alert show={show} setShow={setShow} alertName={alertName} />
     </main>
   );
 }

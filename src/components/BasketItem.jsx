@@ -15,23 +15,25 @@ function BacketItem(props) {
     <ListGroup>
       {' '}
       <ListGroup.Item className="itemBasket" variant="light">
-        {displayName}{' '}
-        <span
-          variant="outline-danger"
-          className="plus"
-          onClick={() => incQuantity(mainId)}
-        >
-          +
-        </span>
-        <span className="itemBasketNumber">x{quantity}</span>
-        <span
-          variant="outline-danger"
-          className="plusMinus"
-          onClick={() => decQuantity(mainId)}
-        >
-          -
-        </span>
-        = {finalPrice * quantity} V-Bucks
+        <div className="textCart">
+          {displayName}{' '}
+          <span
+            variant="outline-danger"
+            className="plus"
+            onClick={() => incQuantity(mainId)}
+          >
+            +
+          </span>
+          <span className="itemBasketNumber">x{quantity}</span>
+          <span
+            variant="outline-danger"
+            className="plusMinus"
+            onClick={() => decQuantity(mainId)}
+          >
+            -
+          </span>
+          = {finalPrice * quantity} VB
+        </div>
         <CloseButton
           className="delete"
           onClick={() => removeFromBasket(mainId)}
