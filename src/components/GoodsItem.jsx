@@ -12,6 +12,8 @@ function GoodsItem(props) {
     addToBasket = Function.prototype,
     order,
     setShow,
+    decQuantity,
+    incQuantity,
   } = props;
 
   const orderItem = order.find((item) => item.mainId === mainId);
@@ -41,15 +43,35 @@ function GoodsItem(props) {
         className="border-top border-primary cardFooter"
         variant="danger"
       >
-        <Button
-          variant="primary rounded-4"
-          onClick={() => {
-            addToBasket({ mainId, displayName, price: { finalPrice } });
-            setShow(true);
-          }}
-        >
-          {orderItem?.quantity ? orderItem?.quantity : 'Buy'}
-        </Button>
+        {orderItem?.quantity ? (
+          <span>
+            <span
+              variant="outline-danger"
+              className="plus"
+              onClick={() => incQuantity(mainId)}
+            >
+              &#10133;
+            </span>{' '}
+            {orderItem?.quantity}{' '}
+            <span
+              variant="outline-danger"
+              className="plusMinus"
+              onClick={() => decQuantity(mainId)}
+            >
+              &#10134;
+            </span>
+          </span>
+        ) : (
+          <Button
+            variant="primary rounded-4"
+            onClick={() => {
+              addToBasket({ mainId, displayName, price: { finalPrice } });
+              setShow(true);
+            }}
+          >
+            Buy
+          </Button>
+        )}
         <span className="m-2">{finalPrice} V-Bucks</span>
       </Card.Footer>
     </Card>

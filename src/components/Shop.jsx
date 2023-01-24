@@ -111,6 +111,8 @@ function Shop() {
             addToBasket={addToBasket}
             order={order}
             setShow={setShow}
+            decQuantity={decQuantity}
+            incQuantity={incQuantity}
           />
           <Paging
             setShopPerPage={setShopPerPage}

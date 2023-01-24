@@ -22,16 +22,16 @@ function BacketItem(props) {
             className="plus"
             onClick={() => incQuantity(mainId)}
           >
-            +
-          </span>
-          <span className="itemBasketNumber">x{quantity}</span>
+            &#10133;
+          </span>{' '}
+          <span className="itemBasketNumber">x{quantity}</span>{' '}
           <span
             variant="outline-danger"
             className="plusMinus"
             onClick={() => decQuantity(mainId)}
           >
-            -
-          </span>
+            &#10134;
+          </span>{' '}
           = {finalPrice * quantity} VB
         </div>
         <CloseButton

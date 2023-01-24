@@ -6,6 +6,8 @@ function GoodsList(props) {
     addToBasket = Function.prototype,
     order,
     setShow,
+    decQuantity,
+    incQuantity,
   } = props;
 
   return (
@@ -18,6 +20,8 @@ function GoodsList(props) {
             key={item.mainId}
             {...item}
             setShow={setShow}
+            decQuantity={decQuantity}
+            incQuantity={incQuantity}
           />
         ))
       ) : (
