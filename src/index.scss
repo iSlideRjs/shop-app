@@ -68,12 +68,17 @@ body {
 .card {
   width: 300px;
   margin: 12px;
+
   &Img {
     height: 298px;
   }
   &Footer {
     user-select: none;
     min-height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
   @include mq(420px) {
     width: 185px;
@@ -145,7 +150,7 @@ body {
   display: inline;
   @include mq(420px) {
     display: inline-block;
-    width: 292px;
+    width: 295px;
   }
 }
 
@@ -164,4 +169,15 @@ body {
 
 .pagi {
   padding: 0.5rem 0.3rem;
+}
+
+.quantity {
+  display: inline-block;
+  background: white;
+  color: black;
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid black;
+  margin: 0;
 }

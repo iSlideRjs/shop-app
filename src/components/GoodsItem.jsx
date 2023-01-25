@@ -39,12 +39,17 @@ function GoodsItem(props) {
         <Card.Title className="cardTitle">{displayName}</Card.Title>
         <Card.Text>{displayDescription}</Card.Text>
       </Card.Body>
-      <Card.Footer
-        className="border-top border-primary cardFooter"
-        variant="danger"
-      >
+      <Card.Footer className="border-top border-primary cardFooter">
         {orderItem?.quantity ? (
           <span>
+            <span
+              variant="outline-danger"
+              className="plusMinus"
+              onClick={() => decQuantity(mainId)}
+            >
+              &#10134;
+            </span>{' '}
+            <p className="quantity">{orderItem?.quantity}</p>{' '}
             <span
               variant="outline-danger"
               className="plus"
@@ -52,18 +57,11 @@ function GoodsItem(props) {
             >
               &#10133;
             </span>{' '}
-            {orderItem?.quantity}{' '}
-            <span
-              variant="outline-danger"
-              className="plusMinus"
-              onClick={() => decQuantity(mainId)}
-            >
-              &#10134;
-            </span>
           </span>
         ) : (
           <Button
             variant="primary rounded-4"
+            className="buy"
             onClick={() => {
               addToBasket({ mainId, displayName, price: { finalPrice } });
               setShow(true);
@@ -72,7 +70,7 @@ function GoodsItem(props) {
             Buy
           </Button>
         )}
-        <span className="m-2">{finalPrice} V-Bucks</span>
+        <span className="ms-1 buyPrice">{finalPrice} V-Bucks</span>
       </Card.Footer>
     </Card>
   );

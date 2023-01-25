@@ -19,18 +19,18 @@ function BacketItem(props) {
           {displayName}{' '}
           <span
             variant="outline-danger"
-            className="plus"
-            onClick={() => incQuantity(mainId)}
-          >
-            &#10133;
-          </span>{' '}
-          <span className="itemBasketNumber">x{quantity}</span>{' '}
-          <span
-            variant="outline-danger"
             className="plusMinus"
             onClick={() => decQuantity(mainId)}
           >
             &#10134;
+          </span>{' '}
+          <span className="itemBasketNumber">x{quantity}</span>{' '}
+          <span
+            variant="outline-danger"
+            className="plus"
+            onClick={() => incQuantity(mainId)}
+          >
+            &#10133;
           </span>{' '}
           = {finalPrice * quantity} VB
         </div>
