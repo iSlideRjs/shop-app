@@ -45,7 +45,7 @@ function GoodsItem(props) {
             <span
               variant="outline-danger"
               className="plusMinus"
-              onClick={() => decQuantity(mainId)}
+              onClick={() => decQuantity(mainId, orderItem.quantity)}
             >
               &#10134;
             </span>{' '}

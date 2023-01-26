@@ -125,10 +125,6 @@ body {
   font-size: 25px;
 }
 
-.delete {
-  float: right;
-}
-
 .itemBasket {
   padding: 8px 5px;
   margin-bottom: 5px;
@@ -147,11 +143,9 @@ body {
 }
 
 .textCart {
-  display: inline;
-  @include mq(420px) {
-    display: inline-block;
-    width: 295px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .plus {

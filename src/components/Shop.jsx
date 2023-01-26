@@ -64,20 +64,27 @@ function Shop() {
     setOrder(newOrder);
   };
 
-  const decQuantity = (itemId) => {
-    const newOrder = order.map((el) => {
-      if (el.mainId === itemId) {
-        const newQuantity = el.quantity - 1;
-        return {
-          ...el,
-          quantity: newQuantity >= 0 ? newQuantity : 0,
-        };
+  const decQuantity = (itemId, quan) => {
+    const newOrder = () => {
+      if (quan > 1) {
+        return order.map((el) => {
+          if (el.mainId === itemId) {
+            const newQuantity = el.quantity - 1;
+            return {
+              ...el,
+              quantity: newQuantity,
+            };
+          } else {
+            return el;
+          }
+        });
       } else {
-        return el;
+        return order.filter((el) => el.mainId !== itemId);
       }
-    });
+    };
     setOrder(newOrder);
   };
+
   useEffect(function getGoods() {
     fetch(API_URL, {
       headers: {
