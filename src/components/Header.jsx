@@ -3,8 +3,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import Logo from '../svg/Logo.svg';
+import { useState } from 'react';
+import { Contacts } from './Contacts';
 
 function Header() {
+  const [contactsShow, setContactsShow] = useState(false);
   return (
     <Navbar bg="dark" variant="dark mb-2">
       <Container>
@@ -20,9 +23,15 @@ function Header() {
         </Navbar.Brand>
         <Nav>
           <Nav.Link href="#">
-            <Button variant="outline-primary rounded-pill">Info </Button>{' '}
+            <Button
+              variant="outline-info rounded-pill"
+              onClick={() => setContactsShow(true)}
+            >
+              Contacts
+            </Button>{' '}
           </Nav.Link>
         </Nav>
+        <Contacts show={contactsShow} onHide={() => setContactsShow(false)} />
       </Container>
     </Navbar>
   );
