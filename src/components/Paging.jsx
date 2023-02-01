@@ -41,10 +41,7 @@ const Paging = ({
         <Dropdown.Item onClick={() => setShopPerPage(36)}>36</Dropdown.Item>
         <Dropdown.Item onClick={() => setShopPerPage(48)}>48</Dropdown.Item>
       </DropdownButton>
-      <Pagination
-        size={totalPages >= 7 ? 'sm' : 'undefiend'}
-        className="d-flex justify-content-center"
-      >
+      <Pagination className="d-flex justify-content-center">
         <Pagination.First onClick={() => setCurrentPage(1)} />
         <Pagination.Prev onClick={toPrevPage} disabled={currentPage === 1} />
         {pageNumbers}

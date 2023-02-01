@@ -14,7 +14,7 @@ function Contacts(props) {
         <Modal.Title id="contained-modal-title-vcenter">Contacts</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h1 className="text-center">
+        <h1 className="text-center contacts">
           <Nav.Link href="https://github.com/iSlideRjs" target="_blank">
             GitHub
           </Nav.Link>

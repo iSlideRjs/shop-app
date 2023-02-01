@@ -177,3 +177,13 @@ body {
   border: 1px solid black;
   margin: 0;
 }
+
+.contacts {
+  color: #f5c908;
+  font-family: 'Shadows Into Light', cursive;
+  font-weight: bold;
+  font-size: 50px;
+  &:hover {
+    color: #bd9c0a;
+  }
+}

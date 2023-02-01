@@ -12,7 +12,7 @@ function Shop() {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [shopPerPage, setShopPerPage] = useState(12);
+  const [shopPerPage, setShopPerPage] = useState(24);
   const [order, setOrder] = useState([]);
   const [isBasketShow, setBasketShow] = useState(false);
   const [show, setShow] = useState(false);
@@ -50,39 +50,38 @@ function Shop() {
   };
 
   const incQuantity = (itemId) => {
-    const newOrder = order.map((el) => {
-      if (el.mainId === itemId) {
+    setOrder(
+      order.map((el) => {
+        if (el.mainId !== itemId) {
+          return el;
+        }
         const newQuantity = el.quantity + 1;
         return {
           ...el,
           quantity: newQuantity,
         };
-      } else {
-        return el;
-      }
-    });
-    setOrder(newOrder);
+      })
+    );
   };
 
-  const decQuantity = (itemId, quan) => {
-    const newOrder = () => {
-      if (quan > 1) {
-        return order.map((el) => {
-          if (el.mainId === itemId) {
-            const newQuantity = el.quantity - 1;
-            return {
-              ...el,
-              quantity: newQuantity,
-            };
-          } else {
-            return el;
-          }
-        });
-      } else {
-        return order.filter((el) => el.mainId !== itemId);
-      }
-    };
-    setOrder(newOrder);
+  const decQuantity = (itemId) => {
+    const orderItem = order.find((item) => item.mainId === itemId);
+    if (orderItem.quantity === 1) {
+      setOrder(order.filter((el) => el.mainId !== itemId));
+      return;
+    }
+    setOrder(
+      order.map((el) => {
+        if (el.mainId !== itemId) {
+          return el;
+        }
+        const newQuantity = el.quantity - 1;
+        return {
+          ...el,
+          quantity: newQuantity,
+        };
+      })
+    );
   };
 
   useEffect(function getGoods() {
@@ -102,6 +101,12 @@ function Shop() {
   const firstShopIndex = lastShopIndex - shopPerPage;
   const currentShop = goods.slice(firstShopIndex, lastShopIndex);
   const totalPages = Math.ceil(goods.length / shopPerPage);
+
+  useEffect(() => {
+    if (totalPages !== 0 && totalPages < currentPage) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const toNextPage = () => setCurrentPage((prev) => prev + 1);

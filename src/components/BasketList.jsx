@@ -8,13 +8,16 @@ function BasketList(props) {
     removeFromBasket = Function.prototype,
     incQuantity = Function.prototype,
     decQuantity = Function.prototype,
+    onHide,
+    show,
   } = props;
   const totalPrice = order.reduce((sum, el) => {
     return sum + el.price.finalPrice * el.quantity;
   }, 0);
   return (
     <Modal
-      {...props}
+      onHide={onHide}
+      show={show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -43,7 +46,7 @@ function BasketList(props) {
           <Button disabled={order.length === 0} variant="success rounded-5">
             Buy
           </Button>
-          <Button variant="danger rounded-5 ms-2" onClick={props.onHide}>
+          <Button variant="danger rounded-5 ms-2" onClick={onHide}>
             Close
           </Button>
         </div>

@@ -21,7 +21,7 @@ function BacketItem(props) {
             <span
               variant="outline-danger"
               className="plusMinus"
-              onClick={() => decQuantity(mainId, quantity)}
+              onClick={() => decQuantity(mainId)}
             >
               &#10134;
             </span>{' '}
@@ -37,7 +37,7 @@ function BacketItem(props) {
           </span>
           <CloseButton
             className="delete"
-            onClick={() => removeFromBasket(mainId, quantity)}
+            onClick={() => removeFromBasket(mainId)}
           />
         </div>
       </ListGroup.Item>
