@@ -14,6 +14,8 @@ function GoodsItem(props) {
     setShow,
     decQuantity,
     incQuantity,
+    setImageShow,
+    setImage,
   } = props;
 
   const orderItem = order.find((item) => item.mainId === mainId);
@@ -25,6 +27,10 @@ function GoodsItem(props) {
             className="d-block w-100 rounded-2 cardImg"
             src={full_background}
             alt={displayName}
+            onClick={() => {
+              setImageShow(true);
+              setImage({ full_background, displayName });
+            }}
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -32,6 +38,10 @@ function GoodsItem(props) {
             className="d-block w-100 rounded-2 cardImg"
             src={background}
             alt={displayName}
+            onClick={() => {
+              setImageShow(true);
+              setImage({ background, displayName });
+            }}
           />
         </Carousel.Item>
       </Carousel>

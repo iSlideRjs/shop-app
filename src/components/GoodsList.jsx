@@ -8,6 +8,8 @@ function GoodsList(props) {
     setShow,
     decQuantity,
     incQuantity,
+    setImageShow,
+    setImage,
   } = props;
 
   return (
@@ -22,6 +24,8 @@ function GoodsList(props) {
             setShow={setShow}
             decQuantity={decQuantity}
             incQuantity={incQuantity}
+            setImageShow={setImageShow}
+            setImage={setImage}
           />
         ))
       ) : (

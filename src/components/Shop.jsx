@@ -7,6 +7,7 @@ import { Paging } from './Paging';
 import { Cart } from './Cart';
 import { BasketList } from './BasketList';
 import { Alert } from './Alert';
+import { Image } from './Image';
 
 function Shop() {
   const [goods, setGoods] = useState([]);
@@ -17,6 +18,8 @@ function Shop() {
   const [isBasketShow, setBasketShow] = useState(false);
   const [show, setShow] = useState(false);
   const [alertName, setAlertName] = useState('');
+  const [imageShow, setImageShow] = useState(false);
+  const [image, setImage] = useState('');
 
   const addToBasket = (item) => {
     const itemIndex = order.findIndex(
@@ -125,6 +128,8 @@ function Shop() {
             setShow={setShow}
             decQuantity={decQuantity}
             incQuantity={incQuantity}
+            setImageShow={setImageShow}
+            setImage={setImage}
           />
           <Paging
             setShopPerPage={setShopPerPage}
@@ -147,6 +152,11 @@ function Shop() {
         incQuantity={incQuantity}
       />
       <Alert show={show} setShow={setShow} alertName={alertName} />
+      <Image
+        image={image}
+        show={imageShow}
+        onHide={() => setImageShow(false)}
+      />
     </main>
   );
 }
