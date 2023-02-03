@@ -2,7 +2,8 @@ $enable-reduced-motion: false;
 $modal-content-bg: #212529;
 $modal-content-color: white;
 $modal-header-border-color: #2c8a48;
-$pagination-padding-x-sm: 0.3rem;
+$modal-lg: 730px;
+$modal-backdrop-opacity: 0.9;
 @mixin mq($str) {
   @media (max-width: $str) {
     @content;

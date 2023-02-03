@@ -29,7 +29,7 @@ function GoodsItem(props) {
             alt={displayName}
             onClick={() => {
               setImageShow(true);
-              setImage({ full_background, displayName });
+              setImage({ full_background, background, displayName });
             }}
           />
         </Carousel.Item>
@@ -40,7 +40,7 @@ function GoodsItem(props) {
             alt={displayName}
             onClick={() => {
               setImageShow(true);
-              setImage({ background, displayName });
+              setImage({ full_background, background, displayName });
             }}
           />
         </Carousel.Item>
