@@ -20,6 +20,11 @@ function Shop() {
   const [alertName, setAlertName] = useState('');
   const [imageShow, setImageShow] = useState(false);
   const [image, setImage] = useState('');
+  const [indexImage, setIndexImage] = useState('');
+
+  const selectImage = (selectedIndex) => {
+    setIndexImage(selectedIndex);
+  };
 
   const addToBasket = (item) => {
     const itemIndex = order.findIndex(
@@ -130,6 +135,7 @@ function Shop() {
             incQuantity={incQuantity}
             setImageShow={setImageShow}
             setImage={setImage}
+            setIndexImage={setIndexImage}
           />
           <Paging
             setShopPerPage={setShopPerPage}
@@ -153,6 +159,8 @@ function Shop() {
       />
       <Alert show={show} setShow={setShow} alertName={alertName} />
       <Image
+        indexImage={indexImage}
+        selectImage={selectImage}
         image={image}
         show={imageShow}
         onHide={() => setImageShow(false)}

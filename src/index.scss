@@ -4,7 +4,8 @@ $modal-content-color: white;
 $modal-header-border-color: #2c8a48;
 $modal-lg: 730px;
 $modal-backdrop-opacity: 0.9;
-@mixin mq($str) {
+
+@mixin mWidth($str) {
   @media (max-width: $str) {
     @content;
   }
@@ -71,7 +72,8 @@ body {
   margin: 12px;
 
   &Img {
-    height: 298px;
+    width: 100%;
+    cursor: pointer;
   }
   &Footer {
     user-select: none;
@@ -81,7 +83,11 @@ body {
     justify-content: space-between;
     align-items: center;
   }
-  @include mq(420px) {
+  @include mWidth(647px) {
+    width: 200px;
+  }
+
+  @include mWidth(447px) {
     width: 185px;
     margin: 5px;
     &Body {
@@ -96,27 +102,9 @@ body {
       padding: 5px;
       font-size: 13px;
     }
-    &Img {
-      height: 183px;
-    }
   }
-  @include mq(389px) {
+  @include mWidth(389px) {
     width: 170px;
-    &Body {
-      height: 100%;
-      font-size: 12px;
-    }
-    &Title {
-      font-size: 14px;
-    }
-    &Footer {
-      min-height: 50px;
-      padding: 5px;
-      font-size: 13px;
-    }
-    &Img {
-      height: 168px;
-    }
   }
 }
 

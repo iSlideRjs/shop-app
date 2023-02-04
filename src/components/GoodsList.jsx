@@ -10,6 +10,7 @@ function GoodsList(props) {
     incQuantity,
     setImageShow,
     setImage,
+    setIndexImage,
   } = props;
 
   return (
@@ -26,6 +27,7 @@ function GoodsList(props) {
             incQuantity={incQuantity}
             setImageShow={setImageShow}
             setImage={setImage}
+            setIndexImage={setIndexImage}
           />
         ))
       ) : (

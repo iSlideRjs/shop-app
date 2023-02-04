@@ -2,8 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 
-function Image(props) {
-  const { show, onHide, image } = props;
+function Image({ show, onHide, image, selectImage, indexImage }) {
   return (
     <Modal
       show={show}
@@ -18,7 +17,11 @@ function Image(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="p-0">
-        <Carousel interval={null}>
+        <Carousel
+          interval={null}
+          activeIndex={indexImage}
+          onSelect={selectImage}
+        >
           <Carousel.Item>
             <img
               className="imgFull rounded-1"
