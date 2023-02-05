@@ -10,7 +10,7 @@ function Contacts(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton className="border-top border-warning">
+      <Modal.Header closeButton className="border-warning">
         <Modal.Title id="contained-modal-title-vcenter">Contacts</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -20,7 +20,7 @@ function Contacts(props) {
           </Nav.Link>
         </h1>
       </Modal.Body>
-      <Modal.Footer className="border-bottom border-warning border-top-0">
+      <Modal.Footer className="border-0">
         <Button variant="warning" onClick={props.onHide}>
           Close
         </Button>
