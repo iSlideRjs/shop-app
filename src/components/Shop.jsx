@@ -8,6 +8,7 @@ import { Cart } from './Cart';
 import { BasketList } from './BasketList';
 import { Alert } from './Alert';
 import { Image } from './Image';
+import { Sorting } from './Sorting';
 
 function Shop() {
   const [goods, setGoods] = useState([]);
@@ -21,6 +22,23 @@ function Shop() {
   const [imageShow, setImageShow] = useState(false);
   const [image, setImage] = useState('');
   const [indexImage, setIndexImage] = useState('');
+  const [sortOrder, setSortOrder] = useState('A-Z');
+
+  const sorting = (Name) => {
+    if (sortOrder === 'A-Z') {
+      const sorted = [...goods].sort((a, b) =>
+        a[Name].toLowerCase() > b[Name].toLowerCase() ? 1 : -1
+      );
+      setGoods(sorted);
+      setSortOrder('Z-A');
+    } else if (sortOrder === 'Z-A') {
+      const sorted = [...goods].sort((a, b) =>
+        a[Name].toLowerCase() < b[Name].toLowerCase() ? 1 : -1
+      );
+      setGoods(sorted);
+      setSortOrder('A-Z');
+    }
+  };
 
   const selectImage = (selectedIndex) => {
     setIndexImage(selectedIndex);
@@ -126,6 +144,7 @@ function Shop() {
         <Preloader />
       ) : (
         <div>
+          <Sorting sorting={sorting} sortOrder={sortOrder} />
           <GoodsList
             goods={currentShop}
             addToBasket={addToBasket}
