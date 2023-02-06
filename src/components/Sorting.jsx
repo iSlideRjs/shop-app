@@ -1,13 +1,19 @@
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Container from 'react-bootstrap/Container';
 
-function Sorting({ sorting = Function.prototype, sortOrder }) {
+function Sorting({ sortingPrice = Function.prototype, sortOrderPrice }) {
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      Sorting by:
-      <Button onClick={() => sorting('displayName')} variant="info ms-1">
-        {sortOrder}
-      </Button>
-    </div>
+    <Container>
+      <div className="d-flex align-items-center">
+        <ButtonGroup aria-label="Basic example">
+          <Button variant="warning ms-3">Sorting by:</Button>
+          <Button onClick={() => sortingPrice('price')} variant="dark">
+            {sortOrderPrice}
+          </Button>
+        </ButtonGroup>
+      </div>
+    </Container>
   );
 }
 

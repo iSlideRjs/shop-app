@@ -22,21 +22,21 @@ function Shop() {
   const [imageShow, setImageShow] = useState(false);
   const [image, setImage] = useState('');
   const [indexImage, setIndexImage] = useState('');
-  const [sortOrder, setSortOrder] = useState('A-Z');
+  const [sortOrderPrice, setSortOrderPrice] = useState('Price ↓');
 
-  const sorting = (Name) => {
-    if (sortOrder === 'A-Z') {
+  const sortingPrice = (price) => {
+    if (sortOrderPrice === 'Price ↓') {
       const sorted = [...goods].sort((a, b) =>
-        a[Name].toLowerCase() > b[Name].toLowerCase() ? 1 : -1
+        a[price].finalPrice > b[price].finalPrice ? 1 : -1
       );
       setGoods(sorted);
-      setSortOrder('Z-A');
-    } else if (sortOrder === 'Z-A') {
+      setSortOrderPrice('Price ↑');
+    } else if (sortOrderPrice === 'Price ↑') {
       const sorted = [...goods].sort((a, b) =>
-        a[Name].toLowerCase() < b[Name].toLowerCase() ? 1 : -1
+        a[price].finalPrice < b[price].finalPrice ? 1 : -1
       );
       setGoods(sorted);
-      setSortOrder('A-Z');
+      setSortOrderPrice('Price ↓');
     }
   };
 
@@ -144,7 +144,10 @@ function Shop() {
         <Preloader />
       ) : (
         <div>
-          <Sorting sorting={sorting} sortOrder={sortOrder} />
+          <Sorting
+            sortingPrice={sortingPrice}
+            sortOrderPrice={sortOrderPrice}
+          />
           <GoodsList
             goods={currentShop}
             addToBasket={addToBasket}
