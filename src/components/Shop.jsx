@@ -23,6 +23,7 @@ function Shop() {
   const [image, setImage] = useState('');
   const [indexImage, setIndexImage] = useState('');
   const [sortOrderPrice, setSortOrderPrice] = useState('Price ↓');
+  const [sortOrderName, setSortOrderName] = useState('A-Z');
 
   const sortingPrice = (price) => {
     if (sortOrderPrice === 'Price ↓') {
@@ -37,6 +38,22 @@ function Shop() {
       );
       setGoods(sorted);
       setSortOrderPrice('Price ↓');
+    }
+  };
+
+  const sortingName = (name) => {
+    if (sortOrderName === 'A-Z') {
+      const sorted = [...goods].sort((a, b) =>
+        a[name].toLowerCase() > b[name].toLowerCase() ? 1 : -1
+      );
+      setGoods(sorted);
+      setSortOrderName('Z-A');
+    } else if (sortOrderName === 'Z-A') {
+      const sorted = [...goods].sort((a, b) =>
+        a[name].toLowerCase() < b[name].toLowerCase() ? 1 : -1
+      );
+      setGoods(sorted);
+      setSortOrderName('A-Z');
     }
   };
 
@@ -147,6 +164,8 @@ function Shop() {
           <Sorting
             sortingPrice={sortingPrice}
             sortOrderPrice={sortOrderPrice}
+            sortOrderName={sortOrderName}
+            sortingName={sortingName}
           />
           <GoodsList
             goods={currentShop}
