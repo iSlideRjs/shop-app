@@ -33,7 +33,7 @@ function GoodsList(props) {
       ) : (
         <h3
           className="d-flex flex-wrap align-content-center"
-          style={{ minHeight: '75vh' }}
+          style={{ minHeight: '55vh' }}
         >
           Nothing here
         </h3>

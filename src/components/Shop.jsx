@@ -9,6 +9,7 @@ import { BasketList } from './BasketList';
 import { Alert } from './Alert';
 import { Image } from './Image';
 import { Sorting } from './Sorting';
+import { Filter } from './Filter';
 
 function Shop() {
   const [goods, setGoods] = useState([]);
@@ -24,6 +25,7 @@ function Shop() {
   const [indexImage, setIndexImage] = useState('');
   const [sortOrderPrice, setSortOrderPrice] = useState('Price ↓');
   const [sortOrderName, setSortOrderName] = useState('A-Z');
+  const [searchName, setSearchName] = useState('');
 
   const sortingPrice = (price) => {
     if (sortOrderPrice === 'Price ↓') {
@@ -154,8 +156,28 @@ function Shop() {
 
   const lastShopIndex = currentPage * shopPerPage;
   const firstShopIndex = lastShopIndex - shopPerPage;
-  const currentShop = goods.slice(firstShopIndex, lastShopIndex);
-  const totalPages = Math.ceil(goods.length / shopPerPage);
+  const currentShop = goods
+    .filter((product) => {
+      if (!searchName) {
+        return product;
+      } else if (
+        product.displayName.toLowerCase().includes(searchName.toLowerCase())
+      ) {
+        return product;
+      }
+    })
+    .slice(firstShopIndex, lastShopIndex);
+  const totalPages = Math.ceil(
+    goods.filter((product) => {
+      if (!searchName) {
+        return product;
+      } else if (
+        product.displayName.toLowerCase().includes(searchName.toLowerCase())
+      ) {
+        return product;
+      }
+    }).length / shopPerPage
+  );
 
   useEffect(() => {
     if (totalPages !== 0 && totalPages < currentPage) {
@@ -173,6 +195,7 @@ function Shop() {
         <Preloader />
       ) : (
         <div>
+          <Filter setSearchName={setSearchName} />
           <Sorting
             sortingPrice={sortingPrice}
             sortOrderPrice={sortOrderPrice}
@@ -190,6 +213,7 @@ function Shop() {
             setImageShow={setImageShow}
             setImage={setImage}
             setIndexImage={setIndexImage}
+            searchName={searchName}
           />
           <Paging
             setShopPerPage={setShopPerPage}
