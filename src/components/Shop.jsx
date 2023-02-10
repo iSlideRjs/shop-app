@@ -57,6 +57,18 @@ function Shop() {
     }
   };
 
+  const sortingRelevance = () => {
+    fetch(API_URL, {
+      headers: {
+        Authorization: API_KEY,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setGoods(data.shop);
+      });
+  };
+
   const selectImage = (selectedIndex) => {
     setIndexImage(selectedIndex);
   };
@@ -166,6 +178,7 @@ function Shop() {
             sortOrderPrice={sortOrderPrice}
             sortOrderName={sortOrderName}
             sortingName={sortingName}
+            sortingRelevance={sortingRelevance}
           />
           <GoodsList
             goods={currentShop}
