@@ -1,6 +1,7 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Pagination from 'react-bootstrap/Pagination';
+import classNames from 'classnames';
 
 const Paging = ({
   paginate,
@@ -30,7 +31,11 @@ const Paging = ({
   };
 
   return (
-    <div className="m-3">
+    <div
+      className={classNames('m-3', {
+        'm-3 visually-hidden': totalPages === 0,
+      })}
+    >
       <DropdownButton
         className="d-flex flex-wrap justify-content-center align-content-center"
         variant="dark mb-3"

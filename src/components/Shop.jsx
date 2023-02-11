@@ -141,6 +141,13 @@ function Shop() {
     );
   };
 
+  const filterSearch = (product) => {
+    if (!searchName) {
+      return product;
+    }
+    return product.displayName.toLowerCase().includes(searchName.toLowerCase());
+  };
+
   useEffect(function getGoods() {
     fetch(API_URL, {
       headers: {
@@ -157,27 +164,9 @@ function Shop() {
   const lastShopIndex = currentPage * shopPerPage;
   const firstShopIndex = lastShopIndex - shopPerPage;
   const currentShop = goods
-    .filter((product) => {
-      if (!searchName) {
-        return product;
-      } else if (
-        product.displayName.toLowerCase().includes(searchName.toLowerCase())
-      ) {
-        return product;
-      }
-    })
+    .filter(filterSearch)
     .slice(firstShopIndex, lastShopIndex);
-  const totalPages = Math.ceil(
-    goods.filter((product) => {
-      if (!searchName) {
-        return product;
-      } else if (
-        product.displayName.toLowerCase().includes(searchName.toLowerCase())
-      ) {
-        return product;
-      }
-    }).length / shopPerPage
-  );
+  const totalPages = Math.ceil(goods.filter(filterSearch).length / shopPerPage);
 
   useEffect(() => {
     if (totalPages !== 0 && totalPages < currentPage) {
@@ -213,7 +202,6 @@ function Shop() {
             setImageShow={setImageShow}
             setImage={setImage}
             setIndexImage={setIndexImage}
-            searchName={searchName}
           />
           <Paging
             setShopPerPage={setShopPerPage}

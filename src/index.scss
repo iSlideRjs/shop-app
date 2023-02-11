@@ -162,10 +162,6 @@ body {
   }
 }
 
-.pagi {
-  padding: 0.5rem 0.3rem;
-}
-
 .quantity {
   display: inline-block;
   background: white;
@@ -194,7 +190,7 @@ body {
 .sortingBorder {
   display: block;
   width: 95%;
-  margin: 10px auto;
+  margin: 8px auto;
   opacity: 0.5;
   border-top: 1px solid #8a8a8a;
 }
@@ -202,4 +198,8 @@ body {
 .filter {
   width: 90%;
   margin: 0 auto;
+}
+
+.bodyList {
+  min-height: 60vh;
 }

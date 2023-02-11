@@ -14,7 +14,7 @@ function GoodsList(props) {
   } = props;
 
   return (
-    <div className="d-flex flex-wrap justify-content-center align-content-center">
+    <div className="d-flex flex-wrap justify-content-center align-content-center bodyList">
       {goods.length ? (
         goods.map((item) => (
           <GoodsItem
@@ -33,7 +33,7 @@ function GoodsList(props) {
       ) : (
         <h3
           className="d-flex flex-wrap align-content-center"
-          style={{ minHeight: '55vh' }}
+          style={{ minHeight: '59vh' }}
         >
           Nothing here
         </h3>

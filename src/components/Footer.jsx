@@ -5,7 +5,7 @@ import Git from '../svg/Git.svg';
 function Footer() {
   return (
     <Navbar
-      className="d-flex justify-content-center"
+      className="d-flex justify-content-center footer"
       style={{ background: '#d5d5d5' }}
       variant="light"
     >
