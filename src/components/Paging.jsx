@@ -11,6 +11,7 @@ const Paging = ({
   currentPage,
   setCurrentPage,
   totalPages,
+  shopPerPage,
 }) => {
   let active = currentPage;
   let pageNumbers = [];
@@ -30,6 +31,8 @@ const Paging = ({
     paginate(totalPages);
   };
 
+  const displayOnPage = 'Display on page: ';
+
   return (
     <div
       className={classNames('m-3', {
@@ -40,7 +43,7 @@ const Paging = ({
         className="d-flex flex-wrap justify-content-center align-content-center"
         variant="dark mb-3"
         id="dropdown-basic-button"
-        title="Display on page"
+        title={displayOnPage + shopPerPage}
       >
         <Dropdown.Item onClick={() => setShopPerPage(24)}>24</Dropdown.Item>
         <Dropdown.Item onClick={() => setShopPerPage(36)}>36</Dropdown.Item>

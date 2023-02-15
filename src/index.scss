@@ -192,12 +192,26 @@ body {
   width: 95%;
   margin: 8px auto;
   opacity: 0.5;
-  border-top: 1px solid #8a8a8a;
+  border-top: 1px solid #00ccff;
+}
+
+.sortingBy {
+  cursor: default !important;
 }
 
 .filter {
+  display: block;
   width: 90%;
   margin: 0 auto;
+  padding-left: 15px;
+  border-radius: 20px;
+  height: 40px;
+  border: 2px solid #00ccff;
+  outline: none;
+  margin-bottom: 8px;
+  &:focus {
+    box-shadow: 0px 0px 4px 1px #00ccff8f;
+  }
 }
 
 .bodyList {
