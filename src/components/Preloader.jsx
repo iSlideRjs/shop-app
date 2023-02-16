@@ -4,10 +4,7 @@ import Container from 'react-bootstrap/Container';
 function Preloader() {
   return (
     <Container>
-      <div
-        style={{ minHeight: '75vh' }}
-        className="d-flex justify-content-center align-content-center flex-wrap"
-      >
+      <div className="d-flex justify-content-center align-content-center flex-wrap loader">
         <Spinner animation="border" variant="info" />
       </div>
     </Container>

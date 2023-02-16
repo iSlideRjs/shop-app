@@ -31,10 +31,7 @@ function GoodsList(props) {
           />
         ))
       ) : (
-        <h3
-          className="d-flex flex-wrap align-content-center"
-          style={{ minHeight: '59vh' }}
-        >
+        <h3 className="d-flex flex-wrap align-content-center nothing">
           Nothing here
         </h3>
       )}

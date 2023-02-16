@@ -33,9 +33,21 @@ body {
 }
 
 .main {
-  min-height: calc(100vh - 56px - 70px - 1rem);
+  min-height: calc(100vh - 56px - 70px - 16px);
   max-width: 1320px;
   margin: 0 auto;
+}
+
+.nothing {
+  min-height: 50vh;
+}
+
+.loader {
+  min-height: 60vh;
+}
+
+.bodyList {
+  min-height: calc(100vh - 56px - 70px - 16px - 228px);
 }
 
 .cart {
@@ -189,7 +201,7 @@ body {
 
 .sortingBorder {
   display: block;
-  width: 95%;
+  width: 92%;
   margin: 8px auto;
   opacity: 0.5;
   border-top: 1px solid #00ccff;
@@ -197,6 +209,7 @@ body {
 
 .sortingBy {
   cursor: default !important;
+  color: black;
   background-color: $info;
   border: none;
   padding: 6px 12px;
@@ -204,6 +217,7 @@ body {
 }
 
 .filter {
+  appearance: none;
   display: block;
   width: 90%;
   margin: 0 auto;
@@ -216,8 +230,4 @@ body {
   &:focus {
     box-shadow: 0px 0px 4px 1px #00ccff8f;
   }
-}
-
-.bodyList {
-  min-height: 60vh;
 }

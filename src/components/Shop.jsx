@@ -174,24 +174,29 @@ function Shop() {
     }
   }, [totalPages, currentPage]);
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000);
+  }, [searchName]);
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const toNextPage = () => setCurrentPage((prev) => prev + 1);
   const toPrevPage = () => setCurrentPage((prev) => prev - 1);
   return (
     <main className="main mb-2">
       <Cart onClick={() => setBasketShow(true)} quantity={order.length} />
+      <Filter setSearchName={setSearchName} setLoading={setLoading} />
+      <Sorting
+        sortingPrice={sortingPrice}
+        sortOrderPrice={sortOrderPrice}
+        sortOrderName={sortOrderName}
+        sortingName={sortingName}
+        sortingRelevance={sortingRelevance}
+      />
       {loading ? (
         <Preloader />
       ) : (
         <div>
-          <Filter setSearchName={setSearchName} />
-          <Sorting
-            sortingPrice={sortingPrice}
-            sortOrderPrice={sortOrderPrice}
-            sortOrderName={sortOrderName}
-            sortingName={sortingName}
-            sortingRelevance={sortingRelevance}
-          />
           <GoodsList
             goods={currentShop}
             addToBasket={addToBasket}
