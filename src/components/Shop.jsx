@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { API_KEY, API_URL } from '../config';
 import { Preloader } from './Preloader';
 import { GoodsList } from './GoodsList';
@@ -174,7 +174,7 @@ function Shop() {
     }
   }, [totalPages, currentPage]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setLoading(true);
     setTimeout(() => setLoading(false), 1000);
   }, [searchName]);
