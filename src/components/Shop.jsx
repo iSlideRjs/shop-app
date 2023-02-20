@@ -185,7 +185,7 @@ function Shop() {
   return (
     <main className="main mb-2">
       <Cart onClick={() => setBasketShow(true)} quantity={order.length} />
-      <Filter setSearchName={setSearchName} setLoading={setLoading} />
+      <Filter setSearchName={setSearchName} />
       <Sorting
         sortingPrice={sortingPrice}
         sortOrderPrice={sortOrderPrice}

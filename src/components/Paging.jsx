@@ -31,19 +31,17 @@ const Paging = ({
     paginate(totalPages);
   };
 
-  const displayOnPage = 'Display on page: ';
-
   return (
     <div
       className={classNames('m-3', {
-        'm-3 visually-hidden': totalPages === 0,
+        'visually-hidden': totalPages === 0,
       })}
     >
       <DropdownButton
         className="d-flex flex-wrap justify-content-center align-content-center"
         variant="dark mb-3"
         id="dropdown-basic-button"
-        title={displayOnPage + shopPerPage}
+        title={'Display on page: ' + shopPerPage}
       >
         <Dropdown.Item onClick={() => setShopPerPage(24)}>24</Dropdown.Item>
         <Dropdown.Item onClick={() => setShopPerPage(36)}>36</Dropdown.Item>

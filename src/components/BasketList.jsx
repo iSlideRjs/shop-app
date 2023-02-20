@@ -44,7 +44,7 @@ function BasketList(props) {
         <div className="price">Total Price: {totalPrice} V-Bucks</div>
         <div>
           <Button disabled={order.length === 0} variant="success rounded-5">
-            Buy
+            Order
           </Button>
           <Button variant="danger rounded-5 ms-2" onClick={onHide}>
             Close
