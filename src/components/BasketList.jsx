@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { BacketItem } from './BasketItem';
+import Table from 'react-bootstrap/Table';
 
 function BasketList(props) {
   const {
@@ -27,18 +28,30 @@ function BasketList(props) {
       </Modal.Header>
       <Modal.Body>
         {order.length ? (
-          order.map((item) => (
-            <BacketItem
-              key={item.mainId}
-              removeFromBasket={removeFromBasket}
-              incQuantity={incQuantity}
-              decQuantity={decQuantity}
-              {...item}
-            />
-          ))
+          <Table bordered hover variant="dark" className="tableBasket">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Del</th>
+              </tr>
+            </thead>
+            <tbody>
+              {order.map((item) => (
+                <BacketItem
+                  key={item.mainId}
+                  removeFromBasket={removeFromBasket}
+                  incQuantity={incQuantity}
+                  decQuantity={decQuantity}
+                  {...item}
+                />
+              ))}{' '}
+            </tbody>
+          </Table>
         ) : (
           <h2 className="emptyBasket">Empty Basket</h2>
-        )}
+        )}{' '}
       </Modal.Body>
       <Modal.Footer>
         <div className="price">Total Price: {totalPrice} V-Bucks</div>
