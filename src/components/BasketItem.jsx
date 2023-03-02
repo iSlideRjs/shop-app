@@ -1,4 +1,6 @@
 import CloseButton from 'react-bootstrap/CloseButton';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 function BacketItem(props) {
   const {
@@ -14,21 +16,17 @@ function BacketItem(props) {
     <tr>
       <td>{displayName}</td>
       <td>
-        <span
-          variant="outline-danger"
-          className="plusMinus"
-          onClick={() => decQuantity(mainId)}
-        >
-          &#10134;
-        </span>{' '}
-        <span className="itemBasketNumber">{quantity}</span>{' '}
-        <span
-          variant="outline-danger"
-          className="plus"
-          onClick={() => incQuantity(mainId)}
-        >
-          &#10133;
-        </span>
+        <ButtonGroup size="sm" className="me-2">
+          <Button variant="secondary" onClick={() => decQuantity(mainId)}>
+            -
+          </Button>{' '}
+          <Button className="quantity" variant="secondary" active>
+            {quantity}
+          </Button>{' '}
+          <Button variant="secondary" onClick={() => incQuantity(mainId)}>
+            +
+          </Button>
+        </ButtonGroup>
       </td>
       <td>{finalPrice * quantity} VB </td>
       <td>

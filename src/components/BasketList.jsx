@@ -26,7 +26,7 @@ function BasketList(props) {
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">Cart</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="ps-1 pe-1 pb-1">
         {order.length ? (
           <Table bordered hover variant="dark" className="tableBasket">
             <thead>

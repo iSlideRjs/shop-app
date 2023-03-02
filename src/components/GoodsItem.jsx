@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 function GoodsItem(props) {
   const {
@@ -54,23 +55,15 @@ function GoodsItem(props) {
       </Card.Body>
       <Card.Footer className="border-top border-primary cardFooter">
         {orderItem?.quantity ? (
-          <span>
-            <span
-              variant="outline-danger"
-              className="plusMinus"
-              onClick={() => decQuantity(mainId, orderItem.quantity)}
-            >
-              &#10134;
-            </span>{' '}
-            <p className="quantity">{orderItem?.quantity}</p>{' '}
-            <span
-              variant="outline-danger"
-              className="plus"
-              onClick={() => incQuantity(mainId)}
-            >
-              &#10133;
-            </span>{' '}
-          </span>
+          <ButtonGroup size="sm" className="me-2">
+            <Button onClick={() => decQuantity(mainId, orderItem.quantity)}>
+              -
+            </Button>{' '}
+            <Button active className="quantity">
+              {orderItem?.quantity}
+            </Button>{' '}
+            <Button onClick={() => incQuantity(mainId)}>+</Button>
+          </ButtonGroup>
         ) : (
           <Button
             variant="primary rounded-4"
@@ -83,7 +76,7 @@ function GoodsItem(props) {
             Buy
           </Button>
         )}
-        <span className="ms-1 buyPrice">{finalPrice} V-Bucks</span>
+        <span className="ms-1 buyPrice">{finalPrice} VB</span>
       </Card.Footer>
     </Card>
   );
