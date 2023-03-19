@@ -1,4 +1,8 @@
-function Filter({ setSearchName }) {
+import { useContext } from 'react';
+import { ShopContext } from '../context';
+
+function Filter() {
+  const { setSearchName } = useContext(ShopContext);
   return (
     <input
       placeholder="Product name"

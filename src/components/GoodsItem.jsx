@@ -2,6 +2,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
 function GoodsItem(props) {
   const {
@@ -10,15 +12,13 @@ function GoodsItem(props) {
     displayDescription,
     price: { finalPrice },
     displayAssets: [{ background, full_background }],
-    addToBasket = Function.prototype,
-    order,
-    setShow,
-    decQuantity,
-    incQuantity,
     setImageShow,
     setImage,
     setIndexImage,
   } = props;
+
+  const { addToBasket, order, decQuantity, incQuantity, setShow } =
+    useContext(ShopContext);
 
   const orderItem = order.find((item) => item.mainId === mainId);
   return (

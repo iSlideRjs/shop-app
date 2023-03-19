@@ -1,7 +1,9 @@
 import Toast from 'react-bootstrap/Toast';
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
-function Alert(props) {
-  const { show, setShow, alertName } = props;
+function Alert() {
+  const { alertName, show, setShow } = useContext(ShopContext);
   return (
     <div className="alert">
       <Toast

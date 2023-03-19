@@ -1,6 +1,8 @@
 import CloseButton from 'react-bootstrap/CloseButton';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
 function BacketItem(props) {
   const {
@@ -8,10 +10,10 @@ function BacketItem(props) {
     displayName,
     price: { finalPrice },
     quantity,
-    removeFromBasket = Function.prototype,
-    incQuantity = Function.prototype,
-    decQuantity = Function.prototype,
   } = props;
+
+  const { removeFromBasket, incQuantity, decQuantity } =
+    useContext(ShopContext);
   return (
     <tr>
       <td>{displayName}</td>
@@ -36,37 +38,6 @@ function BacketItem(props) {
         />
       </td>
     </tr>
-
-    // <ListGroup>
-    //   {' '}
-    //   <ListGroup.Item className="itemBasket" variant="light">
-    //     <div className="textCart">
-    //       <span>
-    //         {displayName}{' '}
-    //         <span
-    //           variant="outline-danger"
-    //           className="plusMinus"
-    //           onClick={() => decQuantity(mainId)}
-    //         >
-    //           &#10134;
-    //         </span>{' '}
-    //         <span className="itemBasketNumber">x{quantity}</span>{' '}
-    //         <span
-    //           variant="outline-danger"
-    //           className="plus"
-    //           onClick={() => incQuantity(mainId)}
-    //         >
-    //           &#10133;
-    //         </span>{' '}
-    //         = {finalPrice * quantity} VB
-    //       </span>
-    //       <CloseButton
-    //         className="delete"
-    //         onClick={() => removeFromBasket(mainId)}
-    //       />
-    //     </div>
-    //   </ListGroup.Item>
-    // </ListGroup>
   );
 }
 

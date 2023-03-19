@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect, useContext, useLayoutEffect } from 'react';
+import { ShopContext } from '../context';
 import { API_KEY, API_URL } from '../config';
 import { Preloader } from './Preloader';
 import { GoodsList } from './GoodsList';
@@ -12,20 +13,38 @@ import { Sorting } from './Sorting';
 import { Filter } from './Filter';
 
 function Shop() {
-  const [goods, setGoods] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {
+    goods,
+    setGoods,
+    loading,
+    order,
+    setBasketShow,
+    setLoading,
+    searchName,
+    sortOrderPrice,
+    sortOrderName,
+    setSortOrderPrice,
+    setSortOrderName,
+  } = useContext(ShopContext);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [shopPerPage, setShopPerPage] = useState(24);
-  const [order, setOrder] = useState([]);
-  const [isBasketShow, setBasketShow] = useState(false);
-  const [show, setShow] = useState(false);
-  const [alertName, setAlertName] = useState('');
   const [imageShow, setImageShow] = useState(false);
   const [image, setImage] = useState('');
   const [indexImage, setIndexImage] = useState('');
-  const [sortOrderPrice, setSortOrderPrice] = useState('Price ↓');
-  const [sortOrderName, setSortOrderName] = useState('A-Z');
-  const [searchName, setSearchName] = useState('');
+
+  useEffect(() => {
+    fetch(API_URL, {
+      headers: {
+        Authorization: API_KEY,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setGoods(data.shop);
+      });
+    //eslint-disable-next-line
+  }, []);
 
   const sortingPrice = (price) => {
     if (sortOrderPrice === 'Price ↓') {
@@ -75,91 +94,12 @@ function Shop() {
     setIndexImage(selectedIndex);
   };
 
-  const addToBasket = (item) => {
-    const itemIndex = order.findIndex(
-      (orderItem) => orderItem.mainId === item.mainId
-    );
-    if (itemIndex < 0) {
-      const newItem = {
-        ...item,
-        quantity: 1,
-      };
-      setOrder([...order, newItem]);
-    } else {
-      const newOrder = order.map((orderItem, index) => {
-        if (index === itemIndex) {
-          return {
-            ...orderItem,
-            quantity: orderItem.quantity + 1,
-          };
-        } else {
-          return orderItem;
-        }
-      });
-      setOrder(newOrder);
-    }
-    setAlertName(item.displayName);
-  };
-
-  const removeFromBasket = (itemId) => {
-    const newOrder = order.filter((el) => el.mainId !== itemId);
-    setOrder(newOrder);
-  };
-
-  const incQuantity = (itemId) => {
-    setOrder(
-      order.map((el) => {
-        if (el.mainId !== itemId) {
-          return el;
-        }
-        const newQuantity = el.quantity + 1;
-        return {
-          ...el,
-          quantity: newQuantity,
-        };
-      })
-    );
-  };
-
-  const decQuantity = (itemId) => {
-    const orderItem = order.find((item) => item.mainId === itemId);
-    if (orderItem.quantity === 1) {
-      setOrder(order.filter((el) => el.mainId !== itemId));
-      return;
-    }
-    setOrder(
-      order.map((el) => {
-        if (el.mainId !== itemId) {
-          return el;
-        }
-        const newQuantity = el.quantity - 1;
-        return {
-          ...el,
-          quantity: newQuantity,
-        };
-      })
-    );
-  };
-
   const filterSearch = (product) => {
     if (!searchName) {
       return product;
     }
     return product.displayName.toLowerCase().includes(searchName.toLowerCase());
   };
-
-  useEffect(function getGoods() {
-    fetch(API_URL, {
-      headers: {
-        Authorization: API_KEY,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        data.shop && setGoods(data.shop);
-        setLoading(false);
-      });
-  }, []);
 
   const lastShopIndex = currentPage * shopPerPage;
   const firstShopIndex = lastShopIndex - shopPerPage;
@@ -172,11 +112,13 @@ function Shop() {
     if (totalPages !== 0 && totalPages < currentPage) {
       setCurrentPage(totalPages);
     }
-  }, [totalPages, currentPage]);
+    //eslint-disable-next-line
+  }, [totalPages]);
 
   useLayoutEffect(() => {
     setLoading(true);
     setTimeout(() => setLoading(false), 1000);
+    //eslint-disable-next-line
   }, [searchName]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -185,11 +127,9 @@ function Shop() {
   return (
     <main className="main mb-2">
       <Cart onClick={() => setBasketShow(true)} quantity={order.length} />
-      <Filter setSearchName={setSearchName} />
+      <Filter />
       <Sorting
         sortingPrice={sortingPrice}
-        sortOrderPrice={sortOrderPrice}
-        sortOrderName={sortOrderName}
         sortingName={sortingName}
         sortingRelevance={sortingRelevance}
       />
@@ -199,11 +139,6 @@ function Shop() {
         <div>
           <GoodsList
             goods={currentShop}
-            addToBasket={addToBasket}
-            order={order}
-            setShow={setShow}
-            decQuantity={decQuantity}
-            incQuantity={incQuantity}
             setImageShow={setImageShow}
             setImage={setImage}
             setIndexImage={setIndexImage}
@@ -220,15 +155,8 @@ function Shop() {
           />
         </div>
       )}
-      <BasketList
-        show={isBasketShow}
-        removeFromBasket={removeFromBasket}
-        onHide={() => setBasketShow(false)}
-        order={order}
-        decQuantity={decQuantity}
-        incQuantity={incQuantity}
-      />
-      <Alert show={show} setShow={setShow} alertName={alertName} />
+      <BasketList />
+      <Alert />
       <Image
         indexImage={indexImage}
         selectImage={selectImage}

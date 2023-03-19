@@ -1,30 +1,15 @@
 import { GoodsItem } from './GoodsItem';
 
 function GoodsList(props) {
-  const {
-    goods = [],
-    addToBasket = Function.prototype,
-    order,
-    setShow,
-    decQuantity,
-    incQuantity,
-    setImageShow,
-    setImage,
-    setIndexImage,
-  } = props;
+  const { setImageShow, setImage, setIndexImage, goods } = props;
 
   return (
     <div className="d-flex flex-wrap justify-content-center align-content-center bodyList">
       {goods.length ? (
         goods.map((item) => (
           <GoodsItem
-            addToBasket={addToBasket}
-            order={order}
             key={item.mainId}
             {...item}
-            setShow={setShow}
-            decQuantity={decQuantity}
-            incQuantity={incQuantity}
             setImageShow={setImageShow}
             setImage={setImage}
             setIndexImage={setIndexImage}

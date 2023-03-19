@@ -2,23 +2,18 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { BacketItem } from './BasketItem';
 import Table from 'react-bootstrap/Table';
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
-function BasketList(props) {
-  const {
-    order = [],
-    removeFromBasket = Function.prototype,
-    incQuantity = Function.prototype,
-    decQuantity = Function.prototype,
-    onHide,
-    show,
-  } = props;
+function BasketList() {
+  const { order, isBasketShow, setBasketShow } = useContext(ShopContext);
   const totalPrice = order.reduce((sum, el) => {
     return sum + el.price.finalPrice * el.quantity;
   }, 0);
   return (
     <Modal
-      onHide={onHide}
-      show={show}
+      onHide={() => setBasketShow(false)}
+      show={isBasketShow}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -39,13 +34,7 @@ function BasketList(props) {
             </thead>
             <tbody>
               {order.map((item) => (
-                <BacketItem
-                  key={item.mainId}
-                  removeFromBasket={removeFromBasket}
-                  incQuantity={incQuantity}
-                  decQuantity={decQuantity}
-                  {...item}
-                />
+                <BacketItem key={item.mainId} {...item} />
               ))}{' '}
             </tbody>
           </Table>
@@ -59,7 +48,10 @@ function BasketList(props) {
           <Button disabled={order.length === 0} variant="success rounded-5">
             Order
           </Button>
-          <Button variant="danger rounded-5 ms-2" onClick={onHide}>
+          <Button
+            variant="danger rounded-5 ms-2"
+            onClick={() => setBasketShow(false)}
+          >
             Close
           </Button>
         </div>

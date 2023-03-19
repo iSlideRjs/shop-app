@@ -2,14 +2,15 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Container from 'react-bootstrap/Container';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
 function Sorting({
   sortingPrice = Function.prototype,
-  sortOrderPrice,
   sortingName = Function.prototype,
-  sortOrderName,
   sortingRelevance = Function.prototype,
 }) {
+  const { sortOrderPrice, sortOrderName } = useContext(ShopContext);
   const [radioValue, setRadioValue] = useState('1');
 
   const radios = [

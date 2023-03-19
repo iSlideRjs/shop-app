@@ -3,7 +3,7 @@ $modal-content-bg: #212529;
 $modal-content-color: white;
 $modal-header-border-color: #2c8a48;
 $modal-lg: 730px;
-$modal-backdrop-opacity: 0.9;
+$modal-backdrop-opacity: 0.8;
 
 @mixin mWidth($str) {
   @media (max-width: $str) {
