@@ -5,12 +5,14 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { ShopContext } from '../context';
 
-function Sorting({
-  sortingPrice = Function.prototype,
-  sortingName = Function.prototype,
-  sortingRelevance = Function.prototype,
-}) {
-  const { sortOrderPrice, sortOrderName } = useContext(ShopContext);
+function Sorting() {
+  const {
+    sortOrderPrice,
+    sortOrderName,
+    sortingPrice,
+    sortingRelevance,
+    sortingName,
+  } = useContext(ShopContext);
   const [radioValue, setRadioValue] = useState('1');
 
   const radios = [

@@ -13,6 +13,11 @@ const initialState = {
   show: false,
   sortOrderPrice: 'Price ↓',
   sortOrderName: 'A-Z',
+  imageShow: false,
+  image: '',
+  indexImage: '',
+  currentPage: 1,
+  shopPerPage: 24,
 };
 
 export const ContextProvider = ({ children }) => {
@@ -42,8 +47,8 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'SET_GOODS', payload: data });
   };
 
-  value.setBasketShow = (show) => {
-    dispatch({ type: 'SET_BASKETSHOW', payload: show });
+  value.setBasketShow = (showBasket) => {
+    dispatch({ type: 'SET_BASKETSHOW', payload: showBasket });
   };
 
   value.setLoading = (loading) => {
@@ -64,6 +69,42 @@ export const ContextProvider = ({ children }) => {
 
   value.setSortOrderName = (name) => {
     dispatch({ type: 'SET_SORT_ORDER_NAME', payload: name });
+  };
+
+  value.setImageShow = (image) => {
+    dispatch({ type: 'SET_IMAGE_SHOW', payload: image });
+  };
+
+  value.setImage = (image) => {
+    dispatch({ type: 'SET_IMAGE', payload: image });
+  };
+
+  value.setIndexImage = (index) => {
+    dispatch({ type: 'SET_INDEX_IMAGE', payload: index });
+  };
+
+  value.selectImage = (selectedIndex) => {
+    dispatch({ type: 'SELECT_IMAGE', payload: selectedIndex });
+  };
+
+  value.sortingPrice = (price) => {
+    dispatch({ type: 'SORTING_PRICE', payload: price });
+  };
+
+  value.sortingRelevance = () => {
+    dispatch({ type: 'SORTING_RELEVANCE' });
+  };
+
+  value.sortingName = (name) => {
+    dispatch({ type: 'SORTING_NAME', payload: name });
+  };
+
+  value.setCurrentPage = (page) => {
+    dispatch({ type: 'SET_CURRENT_PAGE', payload: page });
+  };
+
+  value.setShopPerPage = (page) => {
+    dispatch({ type: 'SET_SHOP_PER_PAGE', payload: page });
   };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;

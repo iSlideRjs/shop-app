@@ -12,13 +12,18 @@ function GoodsItem(props) {
     displayDescription,
     price: { finalPrice },
     displayAssets: [{ background, full_background }],
+  } = props;
+
+  const {
+    addToBasket,
+    order,
+    decQuantity,
+    incQuantity,
+    setShow,
     setImageShow,
     setImage,
     setIndexImage,
-  } = props;
-
-  const { addToBasket, order, decQuantity, incQuantity, setShow } =
-    useContext(ShopContext);
+  } = useContext(ShopContext);
 
   const orderItem = order.find((item) => item.mainId === mainId);
   return (

@@ -1,12 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
-function Image({ show, onHide, image, selectImage, indexImage }) {
+function Image() {
+  const { imageShow, setImageShow, image, indexImage, selectImage } =
+    useContext(ShopContext);
+
   return (
     <Modal
-      show={show}
-      onHide={onHide}
+      show={imageShow}
+      onHide={() => setImageShow(false)}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -39,7 +44,7 @@ function Image({ show, onHide, image, selectImage, indexImage }) {
         </Carousel>
       </Modal.Body>
       <Modal.Footer className="border-0">
-        <Button variant="danger" onClick={onHide}>
+        <Button variant="danger" onClick={() => setImageShow(false)}>
           Close
         </Button>
       </Modal.Footer>
