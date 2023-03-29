@@ -74,6 +74,24 @@ export function reducer(state, { type, payload }) {
         currentPage: payload,
       };
     }
+    case 'TO_NEXT_PAGE': {
+      return {
+        ...state,
+        currentPage: state.currentPage + 1,
+      };
+    }
+    case 'TO_PREV_PAGE': {
+      return {
+        ...state,
+        currentPage: state.currentPage - 1,
+      };
+    }
+    case 'PAGINATE': {
+      return {
+        ...state,
+        currentPage: payload,
+      };
+    }
     case 'SELECT_IMAGE': {
       return {
         ...state,

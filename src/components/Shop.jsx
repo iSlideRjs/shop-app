@@ -13,17 +13,7 @@ import { Sorting } from './Sorting';
 import { Filter } from './Filter';
 
 function Shop() {
-  const {
-    goods,
-    setGoods,
-    loading,
-    setLoading,
-    searchName,
-    currentPage,
-    shopPerPage,
-    setCurrentPage,
-    setShopPerPage,
-  } = useContext(ShopContext);
+  const { setGoods, loading, setLoading, searchName } = useContext(ShopContext);
 
   useEffect(() => {
     fetch(API_URL, {
@@ -44,30 +34,6 @@ function Shop() {
     //eslint-disable-next-line
   }, [searchName]);
 
-  const filterSearch = (product) => {
-    if (!searchName) {
-      return product;
-    }
-    return product.displayName.toLowerCase().includes(searchName.toLowerCase());
-  };
-
-  const lastShopIndex = currentPage * shopPerPage;
-  const firstShopIndex = lastShopIndex - shopPerPage;
-  const currentShop = goods
-    .filter(filterSearch)
-    .slice(firstShopIndex, lastShopIndex);
-  const totalPages = Math.ceil(goods.filter(filterSearch).length / shopPerPage);
-
-  useEffect(() => {
-    if (totalPages !== 0 && totalPages < currentPage) {
-      setCurrentPage(totalPages);
-    }
-    //eslint-disable-next-line
-  }, [totalPages]);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const toNextPage = () => setCurrentPage((prev) => prev + 1);
-  const toPrevPage = () => setCurrentPage((prev) => prev - 1);
   return (
     <main className="main mb-2">
       <Cart />
@@ -77,17 +43,8 @@ function Shop() {
         <Preloader />
       ) : (
         <div>
-          <GoodsList goods={currentShop} />
-          <Paging
-            setShopPerPage={setShopPerPage}
-            setCurrentPage={setCurrentPage}
-            currentPage={currentPage}
-            shopPerPage={shopPerPage}
-            toNextPage={toNextPage}
-            toPrevPage={toPrevPage}
-            totalPages={totalPages}
-            paginate={paginate}
-          />
+          <GoodsList />
+          <Paging />
         </div>
       )}
       <BasketList />

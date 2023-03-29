@@ -18,6 +18,8 @@ const initialState = {
   indexImage: '',
   currentPage: 1,
   shopPerPage: 24,
+  lastShopIndex: '',
+  firstShopIndex: '',
 };
 
 export const ContextProvider = ({ children }) => {
@@ -105,6 +107,18 @@ export const ContextProvider = ({ children }) => {
 
   value.setShopPerPage = (page) => {
     dispatch({ type: 'SET_SHOP_PER_PAGE', payload: page });
+  };
+
+  value.toNextPage = () => {
+    dispatch({ type: 'TO_NEXT_PAGE' });
+  };
+
+  value.toPrevPage = () => {
+    dispatch({ type: 'TO_PREV_PAGE' });
+  };
+
+  value.paginate = (pageNumber) => {
+    dispatch({ type: 'PAGINATE', payload: pageNumber });
   };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;

@@ -2,17 +2,38 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Pagination from 'react-bootstrap/Pagination';
 import classNames from 'classnames';
+import { useContext, useEffect } from 'react';
+import { ShopContext } from '../context';
 
-const Paging = ({
-  paginate,
-  toPrevPage,
-  toNextPage,
-  setShopPerPage,
-  currentPage,
-  setCurrentPage,
-  totalPages,
-  shopPerPage,
-}) => {
+const Paging = () => {
+  const {
+    currentPage,
+    shopPerPage,
+    setCurrentPage,
+    setShopPerPage,
+    toNextPage,
+    toPrevPage,
+    paginate,
+    goods,
+    searchName,
+  } = useContext(ShopContext);
+
+  const filterSearch = (product) => {
+    if (!searchName) {
+      return product;
+    }
+    return product.displayName.toLowerCase().includes(searchName.toLowerCase());
+  };
+
+  const totalPages = Math.ceil(goods.filter(filterSearch).length / shopPerPage);
+
+  useEffect(() => {
+    if (totalPages !== 0 && totalPages < currentPage) {
+      setCurrentPage(totalPages);
+    }
+    //eslint-disable-next-line
+  }, [totalPages]);
+
   let active = currentPage;
   let pageNumbers = [];
   for (let number = 1; number <= totalPages; number++) {
