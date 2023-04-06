@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useContext, useLayoutEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { ShopContext } from '../context';
 import { API_KEY, API_URL } from '../config';
 import { Preloader } from './Preloader';
@@ -13,7 +13,7 @@ import { Sorting } from './Sorting';
 import { Filter } from './Filter';
 
 function Shop() {
-  const { setGoods, loading, setLoading, searchName } = useContext(ShopContext);
+  const { setGoods, loading } = useContext(ShopContext);
 
   useEffect(() => {
     fetch(API_URL, {
@@ -27,12 +27,6 @@ function Shop() {
       });
     //eslint-disable-next-line
   }, []);
-
-  useLayoutEffect(() => {
-    setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
-    //eslint-disable-next-line
-  }, [searchName]);
 
   return (
     <main className="main mb-2">
